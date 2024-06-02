@@ -1,8 +1,9 @@
 import "sanitize.css"
 import { createGlobalStyle } from "styled-components"
+import { ThemeName } from "./theme";
 
 interface Props {
-  themeName: string;
+  themeName: ThemeName;
 }
 
 export const GlobalStyle = createGlobalStyle<Props>`

@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../style/global';
 
 const DEFAULT_THEME_NAME = "light";
-const THEME_LOCALSTORAGE_KEY = "bookstore_theme"
+const THEME_LOCALSTORAGE_KEY = "book_store_theme"
 
 interface State {
   themeName: ThemeName;
@@ -20,7 +20,7 @@ export const ThemeContext = createContext<State>(state);
 
 export const BookStoreThemeProvider = ({children}: {
   children: ReactNode}) => {
-    const [themeName, setThemeName] = useState<ThemeName>("light");
+    const [themeName, setThemeName] = useState<ThemeName>(DEFAULT_THEME_NAME);
     const toggleTheme = () => {
       setThemeName(themeName === "light" ? "dark" : "light");
       localStorage.setItem(THEME_LOCALSTORAGE_KEY, themeName === "light" ? "dark" : "light")
