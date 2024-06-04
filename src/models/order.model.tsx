@@ -7,3 +7,15 @@ export interface Order {
   totalQuantity: number;
   totalPrice: number;
 }
+
+export interface OrderSheet {
+  items: number[];
+  totalQuantity: number;
+  totalPrice: number;
+  firstBookTitle: string;
+  delibery: {
+    address: string;
+    receiver: string;
+    contact: string;
+  }
+}

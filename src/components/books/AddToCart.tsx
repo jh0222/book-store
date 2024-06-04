@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { addCart } from '../../api/carts.api';
-import { useAlert } from '../../hooks/useAlert';
 import { useBook } from '../../hooks/useBook';
 import { BookDetail } from '../../models/book.model';
 import Button from '../common/Button';
