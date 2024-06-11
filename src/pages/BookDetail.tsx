@@ -1,3 +1,4 @@
+import BookReview from '@/components/book/BookReview';
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
@@ -49,7 +50,7 @@ const bookInfoList = [
 
 const BookDetail = () => {
   const { bookId } = useParams();
-  const { book, likeToggle } = useBook(bookId);
+  const { book, likeToggle, reviews, addReview } = useBook(bookId);
 
   if(!book) return null;
 
@@ -85,10 +86,14 @@ const BookDetail = () => {
         <EllipsisBox linelimit={4}>
           {book.detail}
         </EllipsisBox>
+        
         <Title size='medium'>목차</Title>
         <p className="index">
           {book.contents}
         </p>
+
+        <Title size='medium'>리뷰</Title>
+        <BookReview reviews={reviews} onAdd={addReview}/>
       </div>
     </BookDetailStyle>
   )

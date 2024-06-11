@@ -1,3 +1,4 @@
+import { useAuth } from '@/hooks/useAuth'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
@@ -14,8 +15,7 @@ export interface SignupProps {
 }
 
 const Signup = () => {
-  const navigate = useNavigate();
-  const { showAlert } = useAlert();
+  const { userSignup }  = useAuth();
 
   const { 
     register, 
@@ -24,10 +24,7 @@ const Signup = () => {
   } = useForm<SignupProps>();
 
   const onSubmit = (data: SignupProps) => {
-    signup(data).then((res) => {
-      showAlert("회원가입이 완료되었습니다.");
-      navigate("/login");
-    });
+    userSignup(data);
   };
 
   return (
