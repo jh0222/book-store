@@ -41,5 +41,5 @@ export const addReview = http.post("http://localhost:8000/reviews/:bookId", () =
     {
       status: 200
     }
-  )
-})
+  );
+});

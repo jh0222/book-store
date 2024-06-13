@@ -23,8 +23,8 @@ export interface BookDetail extends Book {
 export interface BookReviewItem {
   id: number;
   userName: string;
-  content: string;
   createdAt: string;
+  content: string;
   score: number;
 }
 

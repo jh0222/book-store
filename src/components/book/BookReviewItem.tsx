@@ -1,7 +1,7 @@
 import { BookReviewItem as IBookReviewItem } from '@/models/book.model';
 import { formatDate } from '@/utils/format';
 import { FaStar } from 'react-icons/fa';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 interface Props {
   review: IBookReviewItem;
@@ -12,7 +12,7 @@ const Star = (props: Pick<IBookReviewItem, "score">) =>{
     <span className='star'>
       {
         Array.from({ length: props.score }, (_, index) => (
-          <FaStar />
+          <FaStar key={index} />
         ))
       }
     </span>

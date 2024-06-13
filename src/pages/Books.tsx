@@ -28,7 +28,6 @@ const Books = () => {
           <BooksViewSwitcher />
         </div>
         <BooksList books={books} />
-        <BooksEmpty />
         <Pagination pagination={pagination}/>
       </BooksStyle>
     </>

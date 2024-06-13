@@ -5,7 +5,7 @@ import BookReviewItem from './BookReviewItem';
 
 interface Props {
   reviews: IBookReviewItem[];
-  onAdd: (review: BookReviewItemWrite) => void;
+  onAdd: (data: BookReviewItemWrite) => void;
 }
 
 const BookReview = ({ reviews, onAdd }: Props) => {
@@ -14,7 +14,7 @@ const BookReview = ({ reviews, onAdd }: Props) => {
       <BookReviewAdd onAdd={onAdd} />
       {
         reviews.map((review) => (
-          <BookReviewItem review={review} />
+          <BookReviewItem key={review.id} review={review} />
         ))
       }
       

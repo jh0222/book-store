@@ -1,6 +1,6 @@
 import { BookReviewItemWrite } from '@/models/book.model';
 import { useForm } from 'react-hook-form';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import Button from '../common/Button';
 
 interface Props {
@@ -27,7 +27,7 @@ const BookReviewAdd = ({ onAdd }: Props) => {
               <option value="5">5점</option>
             </select>
           </fieldset>
-          <Button size='medium' scheme='primary'>작성하기</Button>
+          <Button type="submit" size='medium' scheme='primary'>작성하기</Button>
         </div>
       </form>
     </BookReviewAddStyle>
