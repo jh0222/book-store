@@ -1,4 +1,8 @@
+import Button from '@/components/common/Button';
 import Loading from '@/components/common/Loading';
+import { useBooksInfinite } from '@/hooks/useBooksInfinite';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useEffect, useRef } from 'react';
 import { styled } from 'styled-components'
 import BooksEmpty from '../components/books/BooksEmpty';
 import BooksFilter from '../components/books/BooksFilter';
@@ -9,7 +13,37 @@ import Title from '../components/common/Title'
 import { useBooks } from '../hooks/useBooks';
 
 const Books = () => {
-  const { books, pagination, isEmpty, isBooksLoading } = useBooks();
+  // const { books, pagination, isEmpty, isBooksLoading } = useBooks();
+  const { books, pagination, isEmpty, isBooksLoading, fetchNextPage, hasNextPage } = useBooksInfinite();
+  // const moreRef = useRef(null);
+
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver((entries) => {
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         loadMore();
+  //         observer.unobserve(entry.target)
+  //       }
+  //     })
+  //   })
+
+  //   if(moreRef.current) {
+  //     observer.observe(moreRef.current)
+  //   }
+
+  //   return () => observer.disconnect();
+  // }, [books])
+
+  const moreRef = useIntersectionObserver(([entry]) => {
+    if(entry.isIntersecting) {
+      loadMore();
+    }
+  });
+
+  const loadMore = () => {
+    if (!hasNextPage) return;
+    fetchNextPage();
+  }
 
   if (isEmpty) {
     return <BooksEmpty />;
@@ -28,7 +62,12 @@ const Books = () => {
           <BooksViewSwitcher />
         </div>
         <BooksList books={books} />
-        <Pagination pagination={pagination}/>
+        {/* <Pagination pagination={pagination}/> */}
+        <div className="more" ref={moreRef}>
+          <Button size='medium' scheme='normal' onClick={() => fetchNextPage()} disabled={!hasNextPage}>
+            {hasNextPage ? "더보기" : "마지막 페이지"}
+          </Button>
+        </div>
       </BooksStyle>
     </>
   )

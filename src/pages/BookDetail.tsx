@@ -1,5 +1,7 @@
 import BookReview from '@/components/book/BookReview';
+import Modal from '@/components/common/Modal';
 import { Tabs, Tab } from '@/components/common/Tabs';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 import { styled } from 'styled-components'
@@ -51,15 +53,19 @@ const bookInfoList = [
 const BookDetail = () => {
   const { bookId } = useParams();
   const { book, likeToggle, reviews, addReview } = useBook(bookId);
+  const [isImgOpen, setImgOpen] = useState(false);
 
   if(!book) return null;
 
   return (
     <BookDetailStyle>
       <header className='header'>
-        <div className="img">
+        <div className="img" onClick={() => setImgOpen(true)}>
           <img src={getImgSrc(book.img)} alt={book.title} />
         </div>
+        <Modal isOpen={isImgOpen} onClose={() => setImgOpen(false)}>
+          <img src={getImgSrc(book.img)} alt={book.title} />
+        </Modal>
         <div className="info">
           <Title size='large' color='text'>
             {book.title}
