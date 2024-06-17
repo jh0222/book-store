@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAlert } from "./useAlert";
 
 export const useAuth = () => {
-  const { storeLogin, storeLogout, isloggedIn } = useAuthStore();
+  const { storeLogin } = useAuthStore();
   const { showAlert } = useAlert();
   const navigate = useNavigate();
 

@@ -78,12 +78,12 @@ export const useBook = (bookId: string | undefined) => {
     if(!book) return;
 
     addBookReview(book.id.toString(), data).then((res) => {
-      // fetchBookReview(book.id.toString()).then((reviews) => {
-      //   setReviews(reviews)
-      // })
-      showAlert(res.message);
-    })
-  }
+      fetchBookReview(book.id.toString()).then((reviews) => {
+        setReviews(reviews)
+      });
+      // showAlert(res.message);/
+    });
+  };
 
   return { book, likeToggle, addToCart, cartAdded, reviews, addReview };
 }

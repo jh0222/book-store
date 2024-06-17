@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from "react-query";
+import { useInfiniteQuery } from "react-query";
 import { useLocation } from "react-router-dom"
 import { fetchBooks } from "../api/books.api";
 import { QUERYSTRING } from "../constants/querystring";

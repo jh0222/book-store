@@ -2,15 +2,12 @@ import Button from '@/components/common/Button';
 import Loading from '@/components/common/Loading';
 import { useBooksInfinite } from '@/hooks/useBooksInfinite';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
-import { useEffect, useRef } from 'react';
 import { styled } from 'styled-components'
 import BooksEmpty from '../components/books/BooksEmpty';
 import BooksFilter from '../components/books/BooksFilter';
 import BooksList from '../components/books/BooksList';
 import BooksViewSwitcher from '../components/books/BooksViewSwitcher';
-import Pagination from '../components/books/Pagination';
 import Title from '../components/common/Title'
-import { useBooks } from '../hooks/useBooks';
 
 const Books = () => {
   // const { books, pagination, isEmpty, isBooksLoading } = useBooks();

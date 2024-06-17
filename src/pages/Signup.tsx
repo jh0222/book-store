@@ -1,13 +1,10 @@
 import { useAuth } from '@/hooks/useAuth'
-import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { styled } from 'styled-components'
-import { signup } from '../api/auth.api'
 import Button from '../components/common/Button'
 import InputText from '../components/common/InputText'
 import Title from '../components/common/Title'
-import { useAlert } from '../hooks/useAlert'
 
 export interface SignupProps {
   email: string;

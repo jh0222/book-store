@@ -21,6 +21,7 @@ const Login = () => {
   } = useForm<LoginProps>();
 
   const onSubmit = (data: LoginProps) => {
+    alert(data)
     userLogin(data);
   };
 
