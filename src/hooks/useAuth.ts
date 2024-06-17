@@ -12,6 +12,7 @@ export const useAuth = () => {
   const navigate = useNavigate();
 
   const userLogin = (data: LoginProps) => {
+    console.log(123456789);
     login(data).then((res) => {
       storeLogin(res.token);  // 상태 변화
       showAlert("로그인이 완료되었습니다.");

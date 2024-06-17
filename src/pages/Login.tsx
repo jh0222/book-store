@@ -1,10 +1,10 @@
-import { useAuth } from '@/hooks/useAuth'
-import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
-import Button from '../components/common/Button'
-import InputText from '../components/common/InputText'
-import Title from '../components/common/Title'
-import { SignupStyle } from './Signup'
+import Button from "@/components/common/Button";
+import InputText from "@/components/common/InputText";
+import Title from "@/components/common/Title";
+import { useAuth } from "@/hooks/useAuth";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { SignupStyle } from "./Signup";
 
 export interface LoginProps {
   email: string;
@@ -21,7 +21,6 @@ const Login = () => {
   } = useForm<LoginProps>();
 
   const onSubmit = (data: LoginProps) => {
-    alert(data)
     userLogin(data);
   };
 
@@ -34,7 +33,8 @@ const Login = () => {
             <InputText 
               placeholder="이메일" 
               inputType="email"  
-              {...register("email", { required: true })}  
+              {...register("email", { required: true })} 
+              inputMode="email"
             />
             {errors.email && <p className="error-text">이메일을 입력해주세요.</p>}
           </fieldset>
@@ -43,6 +43,7 @@ const Login = () => {
               placeholder="비밀번호" 
               inputType="password"
               {...register("password", { required: true })}  
+              inputMode="text"
             />
             {errors.password && <p className="error-text">비밀번호를 입력해주세요.</p>}
           </fieldset>

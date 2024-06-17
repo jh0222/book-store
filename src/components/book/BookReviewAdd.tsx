@@ -10,17 +10,9 @@ interface Props {
 const BookReviewAdd = ({ onAdd }: Props) => {
   const { register, handleSubmit, formState: { errors }} = useForm<BookReviewItemWrite>();
 
-  const handleAdd = (data: BookReviewItemWrite) => {
-    console.log('Errors:', errors);
-    console.log('Form Data:', data);
-    alert(JSON.stringify(data));
-    onAdd(data);
-  }
-  console.log(errors);
-
   return (
     <BookReviewAddStyle>
-      <form onSubmit={handleSubmit(handleAdd)}>
+      <form onSubmit={handleSubmit(onAdd)}>
         <fieldset> 
           <textarea {...register("content", { required: true })}></textarea>
           {errors.content && <p className='error-text'>리뷰 내용을 입력해주세요.</p>}
@@ -34,8 +26,8 @@ const BookReviewAdd = ({ onAdd }: Props) => {
               <option value="4">4점</option>
               <option value="5">5점</option>
             </select>
-          <Button type="submit" size='medium' scheme='primary'>작성하기</Button>
           </fieldset>
+          <Button type="submit" size='medium' scheme='primary'>작성하기</Button>
         </div>
       </form>
     </BookReviewAddStyle>
